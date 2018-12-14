@@ -629,7 +629,7 @@
      */
     PivotData = (function() {
       function PivotData(input, opts) {
-        var ref, ref1, ref2, ref3, ref4, ref5, ref6, ref7, ref8, ref9;
+        var ref, ref1, ref10, ref2, ref3, ref4, ref5, ref6, ref7, ref8, ref9;
         if (opts == null) {
           opts = {};
         }
@@ -651,6 +651,7 @@
         this.filter = (ref9 = opts.filter) != null ? ref9 : (function() {
           return true;
         });
+        this.tooltips = (ref10 = opts.tooltips) != null ? ref10 : {};
         this.tree = {};
         this.rowKeys = [];
         this.colKeys = [];
@@ -1228,7 +1229,8 @@
         filter: function() {
           return true;
         },
-        sorters: {}
+        sorters: {},
+        tooltips: {}
       };
       localeStrings = $.extend(true, {}, locales.en.localeStrings, locales[locale].localeStrings);
       localeDefaults = {
@@ -1336,7 +1338,7 @@
           unused.addClass('pvtHorizList');
         }
         fn1 = function(attr) {
-          var attrElem, checkContainer, closeFilterBox, controls, filterItem, filterItemExcluded, finalButtons, hasExcludedItem, len2, n, placeholder, ref1, sorter, triangleLink, v, value, valueCount, valueList, values;
+          var attrElem, attrTitle, checkContainer, closeFilterBox, controls, filterItem, filterItemExcluded, finalButtons, hasExcludedItem, len2, n, placeholder, ref1, ref2, sorter, triangleLink, v, value, valueCount, valueList, values;
           values = (function() {
             var results;
             results = [];
@@ -1460,7 +1462,8 @@
               top: top + 10
             }).show();
           });
-          attrElem = $("<li>").addClass("axis_" + i).append($("<span>").addClass('pvtAttr').text(attr).data("attrName", attr).append(triangleLink));
+          attrTitle = (ref2 = opts.tooltips[attr]) != null ? ref2 : attr;
+          attrElem = $("<li>").addClass("axis_" + i).append($("<span>").addClass('pvtAttr').attr("title", attrTitle).text(attr).data("attrName", attr).append(triangleLink));
           if (hasExcludedItem) {
             attrElem.addClass('pvtFilteredAttribute');
           }

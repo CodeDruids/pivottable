@@ -313,6 +313,7 @@ callWithJQuery ($) ->
             @colOrder = opts.colOrder ? "key_a_to_z"
             @derivedAttributes = opts.derivedAttributes ? {}
             @filter = opts.filter ? (-> true)
+            @tooltips = opts.tooltips ? {}
             @tree = {}
             @rowKeys = []
             @colKeys = []
@@ -676,6 +677,7 @@ callWithJQuery ($) ->
             showUI: true
             filter: -> true
             sorters: {}
+            tooltips: {}
 
         localeStrings = $.extend(true, {}, locales.en.localeStrings, locales[locale].localeStrings)
         localeDefaults =
@@ -852,8 +854,10 @@ callWithJQuery ($) ->
                             {left, top} = $(e.currentTarget).position()
                             valueList.css(left: left+10, top: top+10).show()
 
+                    attrTitle = opts.tooltips[attr] ? attr
+
                     attrElem = $("<li>").addClass("axis_#{i}")
-                        .append $("<span>").addClass('pvtAttr').text(attr).data("attrName", attr).append(triangleLink)
+                        .append $("<span>").addClass('pvtAttr').attr("title", attrTitle).text(attr).data("attrName", attr).append(triangleLink)
 
                     attrElem.addClass('pvtFilteredAttribute') if hasExcludedItem
                     unused.append(attrElem).append(valueList)
