@@ -6,7 +6,7 @@ callWithJQuery = (pivotModule) ->
     # Plain browser env
     else
         pivotModule jQuery
-        
+
 callWithJQuery ($) ->
     nf = $.pivotUtilities.numberFormat
     tpl = $.pivotUtilities.aggregatorTemplates
@@ -25,12 +25,12 @@ callWithJQuery ($) ->
             renderError: "Ocorreu um error ao renderizar os resultados da Tabela Dinâmica."
             computeError: "Ocorreu um error ao computar os resultados da Tabela Dinâmica."
             uiRenderError: "Ocorreu um error ao renderizar a interface da Tabela Dinâmica."
-            selectAll: "Selecionar Tudo"
-            selectNone: "Selecionar Nenhum"
+            selectAll: "Todos"
+            selectNone: "Nenhum"
             tooMany: "(demais para listar)"
             filterResults: "Filtrar resultados"
             totals: "Totais"
-            apply:"Aplicar",
+            apply:"Filtrar",
             cancel: "Cancelar",
             vs: "vs"
             by: "por"
